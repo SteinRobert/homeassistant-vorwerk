@@ -3,7 +3,7 @@ import logging
 
 from pybotvac.robot import Robot
 
-from homeassistant.components.sensor import DEVICE_CLASS_BATTERY
+from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.const import PERCENTAGE
 from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.update_coordinator import (
@@ -18,6 +18,8 @@ from .const import (
     VORWERK_ROBOT_COORDINATOR,
     VORWERK_ROBOTS,
 )
+
+DEVICE_CLASS_BATTERY = SensorDeviceClass.BATTERY
 
 _LOGGER = logging.getLogger(__name__)
 

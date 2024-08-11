@@ -61,7 +61,7 @@ SUPPORT_VORWERK = (
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Vorwerk vacuum with config entry."""
 
-    _LOGGER.debug("Adding vorwerk vacuums")
+    _LOGGER.debug("Adding vorwerk vacuums " + str(entry.entry_id))
     async_add_entities(
         [
             VorwerkConnectedVacuum(

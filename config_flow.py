@@ -112,6 +112,7 @@ class VorwerkConfigFlow(config_entries.ConfigFlow, domain=VORWERK_DOMAIN):
     def _get_robots(self, email: str, code: str):
         """Fetch the robot list from vorwerk."""
         self._session.fetch_token_passwordless(email, code)
+        _LOGGER.info(self._session.get("users/me/robots").json())
         return [
             {
                 VORWERK_ROBOT_NAME: robot["name"],

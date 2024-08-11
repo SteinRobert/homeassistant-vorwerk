@@ -88,6 +88,8 @@ async def async_setup(hass: HomeAssistantType, config: ConfigType) -> bool:
 
 async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool:
     """Set up config entry."""
+    _LOGGER.debug("Setting up Vorwerk component")
+    _LOGGER.debug(entry)
     robots = await _async_create_robots(hass, entry.data[VORWERK_ROBOTS])
 
     robot_states = [VorwerkState(robot) for robot in robots]
@@ -104,7 +106,7 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool
 
     for component in VORWERK_PLATFORMS:
         hass.async_create_task(
-            await hass.config_entries.async_forward_entry_setup(entry, component)
+            hass.config_entries.async_forward_entry_setup(entry, component)
         )
 
     return True
